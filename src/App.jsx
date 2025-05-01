@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <div className="bg-gradient-to-r from-[rgba(103,151,255,0.3)] to-[rgba(255,111,185,0.1)] ">
-        <div className="px-[240px]">
+        <div className="w-[1440px] mx-auto ">
           <Header />
           <Hero />
         </div>

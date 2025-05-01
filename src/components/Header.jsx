@@ -31,7 +31,7 @@ export const Header = () => {
                     </div>
                 </div>
 
-                <button className="py-[13px] px-[16px] rounded-[50px] border-[1px] border-[#010205] cursor-pointer font-[700] text-[16px] leading-[140%] tracking-[-2%] text-[#010205] hover:bg-[#FF6FB9] hover:text-white transition duration-300 ease-in-out">
+                <button className="py-[13px] px-[16px] rounded-[50px] border-[1px] border-[#010205] cursor-pointer font-[700] text-[16px] leading-[140%] tracking-[-2%] text-[#010205] hover:bg-[#FF6FB9] hover:text-white hover:border-[#FF6FB9] transition duration-300 ease-in-out">
                     Get Started
                 </button>
             </nav>
