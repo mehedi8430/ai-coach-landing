@@ -1,7 +1,7 @@
 
-export const Hero = () => {
+export const HeroSection = () => {
     return (
-        <section className="mt-[82px] pb-[82px] w-1442px h-750px">
+        <section className="mt-[82px] pb-[82px] w-[1442px] h-750px">
             <div className="flex flex-col md:flex-row relative">
                 {/* Left column - Main heading and description */}
                 <div className="mt-[44px]">
