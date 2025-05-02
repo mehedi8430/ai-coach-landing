@@ -96,53 +96,53 @@ export const AiCoachSection = () => {
     };
 
     return (
-        <section className="w-[1441.62px] mx-auto space-y-10 py-[60px]">
+        <section className="max-w-full md:w-[1441.62px] md:mx-auto space-y-10 py-[60px] px-4">
             <div className="h-[117px] space-y-[20px]">
-                <p className="font-normal text-[24px] leading-[100%] tracking-[-1%] text-[#FCE38A] font-questrial">
+                <p className="font-normal text-[24px] max-sm:text-[18px] leading-[100%] tracking-[-1%] text-[#FCE38A] font-questrial">
                     Live Ai Coach
                 </p>
-                <h4 className="font-normal text-[60px] leading-[120%] tracking-[-1%] text-[#FFFFFF] font-questrial">
+                <h4 className="font-normal text-[60px] max-sm:text-[32px] leading-[120%] tracking-[-1%] text-[#FFFFFF] font-questrial">
                     Take a Suggestion Coaching
                 </h4>
             </div>
 
-            <div className="w-full h-[577px] rounded-[8px] flex items-center gap-6">
+            <div className="w-full h-[577px] max-sm:h-auto rounded-[8px] flex flex-col md:flex-row md:items-center gap-6">
                 {/* Chat form */}
-                <div className="w-[787px] h-full border-[1px] border-[#CDCDCD] rounded-[12px] bg-[#F2F3F3] overflow-hidden flex flex-col">
+                <div className="w-full md:w-[787px] h-full border-[1px] border-[#CDCDCD] rounded-[12px] bg-[#F2F3F3] overflow-hidden flex flex-col">
                     <div className="bg-[#FFFFFF]">
-                        <p className="pl-[32px] py-[16px] font-bold text-[20px] leading-[120%] tracking-[0%] text-[#1B1B1B]">
+                        <p className="pl-[32px] py-[16px] font-bold text-[20px] max-sm:text-[16px] leading-[120%] tracking-[0%] text-[#1B1B1B]">
                             AI Sales Coach
                         </p>
                     </div>
 
-                    <div className="p-[20px] flex-1 overflow-y-auto flex flex-col gap-4">
+                    <div className="p-[20px] max-sm:p-4 flex-1 overflow-y-auto flex flex-col gap-4">
                         {messages.map((message) => (
                             <div
                                 key={message.id}
                                 className={`flex gap-4 items-start ${message.sender === 'User' ? 'justify-end' : ''}`}
                             >
                                 {message.sender === 'AI' && (
-                                    <div className="w-10 h-10 rounded-[41px] bg-[#D9D9D9]"></div>
+                                    <div className="w-10 h-10 max-sm:w-8 max-sm:h-8 rounded-[41px] bg-[#D9D9D9]"></div>
                                 )}
                                 <div
-                                    className={`max-w-[628px] rounded-lg py-2 px-6 ${message.sender === 'User'
+                                    className={`max-w-[628px] max-sm:max-w-[80%] rounded-lg py-2 px-6 ${message.sender === 'User'
                                         ? 'bg-[#002868] text-[#FFFFFF]'
                                         : 'bg-[#FFFFFF] text-[#181818]'
                                         }`}
                                 >
-                                    <p className="font-normal font-lato text-[18px] leading-[32px] tracking-[0%]">
+                                    <p className="font-normal font-lato text-[18px] max-sm:text-[14px] leading-[32px] max-sm:leading-[24px] tracking-[0%]">
                                         {message.text}
                                     </p>
                                 </div>
                                 {message.sender === 'User' && (
-                                    <div className="w-10 h-10 rounded-[41px] bg-[#002868]"></div>
+                                    <div className="w-10 h-10 max-sm:w-8 max-sm:h-8 rounded-[41px] bg-[#002868]"></div>
                                 )}
                             </div>
                         ))}
                     </div>
 
-                    <div className="mt-auto bg-[#FFFFFF] px-[34px] py-[14px] space-y-[14px]">
-                        <div className="flex gap-[12.82px]">
+                    <div className="mt-auto bg-[#FFFFFF] px-[34px] max-sm:px-4 py-[14px] space-y-[14px]">
+                        <div className="flex flex-wrap gap-[12.82px]">
                             <button
                                 onClick={() =>
                                     handleButtonClick(
@@ -150,7 +150,7 @@ export const AiCoachSection = () => {
                                         'To handle objections effectively, listen actively to the customer’s concerns, acknowledge their perspective, and address the issue with clear, concise information. For example, if a client objects to price, highlight the value and ROI your product offers.'
                                     )
                                 }
-                                className="px-[17px] py-[12px] bg-[#00286814] rounded-[36px] font-normal text-[14px] leading-[100%] tracking-[-4%] text-center text-[#002868] font-geist cursor-pointer"
+                                className="px-[17px] py-[12px] max-sm:px-3 max-sm:py-2 max-sm:text-[12px] bg-[#00286814] rounded-[36px] font-normal text-[14px] leading-[100%] tracking-[-4%] text-center text-[#002868] font-geist cursor-pointer"
                             >
                                 How do I handle objections?
                             </button>
@@ -161,7 +161,7 @@ export const AiCoachSection = () => {
                                         'Here’s a sample cold email template: Subject: [Personalized Hook]\n\nHi [Name],\n\nI noticed [Specific Detail]. Our [Product/Service] can help you [Benefit]. Would you be open to a quick chat to explore how we can support your goals?\n\nBest,\n[Your Name]'
                                     )
                                 }
-                                className="px-[17px] py-[12px] bg-[#00286814] rounded-[36px] font-normal text-[14px] leading-[100%] tracking-[-4%] text-center text-[#002868] font-geist cursor-pointer"
+                                className="px-[17px] py-[12px] max-sm:px-3 max-sm:py-2 max-sm:text-[12px] bg-[#00286814] rounded-[36px] font-normal text-[14px] leading-[100%] tracking-[-4%] text-center text-[#002868] font-geist cursor-pointer"
                             >
                                 Give me a cold email template
                             </button>
@@ -172,7 +172,7 @@ export const AiCoachSection = () => {
                                         'Effective closing techniques include the assumptive close (acting as if the sale is confirmed), the urgency close (highlighting limited availability), and the question close (e.g., “Does this solution meet your needs?”). Always align the close with the customer’s needs.'
                                     )
                                 }
-                                className="px-[17px] py-[12px] bg-[#00286814] rounded-[36px] font-normal text-[14px] leading-[100%] tracking-[-4%] text-center text-[#002868] font-geist cursor-pointer"
+                                className="px-[17px] py-[12px] max-sm:px-3 max-sm:py-2 max-sm:text-[12px] bg-[#00286814] rounded-[36px] font-normal text-[14px] leading-[100%] tracking-[-4%] text-center text-[#002868] font-geist cursor-pointer"
                             >
                                 Closing techniques
                             </button>
@@ -183,7 +183,7 @@ export const AiCoachSection = () => {
                                         'Key negotiation tips: Build rapport, understand the other party’s priorities, and focus on win-win outcomes. Be prepared to offer concessions strategically, and always have a clear bottom line before starting the discussion.'
                                     )
                                 }
-                                className="px-[17px] py-[12px] bg-[#00286814] rounded-[36px] font-normal text-[14px] leading-[100%] tracking-[-4%] text-center text-[#002868] font-geist cursor-pointer"
+                                className="px-[17px] py-[12px] max-sm:px-3 max-sm:py-2 max-sm:text-[12px] bg-[#00286814] rounded-[36px] font-normal text-[14px] leading-[100%] tracking-[-4%] text-center text-[#002868] font-geist cursor-pointer"
                             >
                                 Negotiation tips
                             </button>
@@ -196,12 +196,12 @@ export const AiCoachSection = () => {
                                 value={inputText}
                                 onChange={handleInputChange}
                                 onKeyPress={handleKeyPress}
-                                className={`w-[600px] py-[17px] px-[23px] rounded-[4px] border ${error ? 'border-red-500' : 'border-[#E5E7EB]'
+                                className={`w-[600px] max-sm:w-full py-[17px] px-[23px] rounded-[4px] border ${error ? 'border-red-500' : 'border-[#E5E7EB]'
                                     } bg-[#FFFFFF3D] placeholder:text-[#9A9A9A] placeholder:font-normal placeholder:text-[14px] placeholder:leading-[100%] placeholder:tracking-[0.04em]`}
                             />
                             <button
                                 onClick={handleSendMessage}
-                                className="w-[100px] h-[48px] p-[14px] bg-[#002868] rounded-[8px] flex gap-[10px] items-center font-geist font-medium text-[100%] leading-[100%] tracking-[-4%] text-[#FFFFFF]"
+                                className="w-[100px] h-[48px] max-sm:w-[80px] max-sm:h-[40px] p-[14px] max-sm:p-2 bg-[#002868] rounded-[8px] flex gap-[10px] items-center font-geist font-medium text-[100%] leading-[100%] tracking-[-4%] text-[#FFFFFF]"
                             >
                                 Send
                                 <svg
@@ -230,7 +230,7 @@ export const AiCoachSection = () => {
                 </div>
 
                 {/* Action section */}
-                <div className="w-[72px] h-[328px] border-[1px] border-[#4E4E4E1A] rounded-[57px] bg-[#F2F3F3] flex flex-col gap-[40px] p-[24px] backdrop-blur-xl">
+                <div className="w-[72px] h-[328px] max-sm:w-full max-sm:h-auto max-sm:flex-row max-sm:flex-wrap max-sm:gap-4 max-sm:p-4 border-[1px] border-[#4E4E4E1A] rounded-[57px] max-sm:rounded-[12px] bg-[#F2F3F3] flex flex-col md:flex-col gap-[40px] p-[24px] backdrop-blur-xl">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -241,7 +241,7 @@ export const AiCoachSection = () => {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="lucide lucide-refresh-ccw-icon lucide-refresh-ccw"
+                        className="lucide lucide-refresh-ccw-icon lucide-refresh-ccw max-sm:w-6 max-sm:h-6"
                     >
                         <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
                         <path d="M3 3v5h5" />
@@ -258,7 +258,7 @@ export const AiCoachSection = () => {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="lucide lucide-thumbs-up-icon lucide-thumbs-up"
+                        className="lucide lucide-thumbs-up-icon lucide-thumbs-up max-sm:w-6 max-sm:h-6"
                     >
                         <path d="M7 10v12" />
                         <path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z" />
@@ -273,7 +273,7 @@ export const AiCoachSection = () => {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="lucide lucide-thumbs-up-icon lucide-thumbs-up"
+                        className="lucide lucide-thumbs-up-icon lucide-thumbs-up max-sm:w-6 max-sm:h-6"
                     >
                         <path d="M7 10v12" />
                         <path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z" />
@@ -288,7 +288,7 @@ export const AiCoachSection = () => {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="lucide lucide-clipboard-icon lucide-clipboard"
+                        className="lucide lucide-clipboard-icon lucide-clipboard max-sm:w-6 max-sm:h-6"
                     >
                         <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
                         <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
@@ -303,7 +303,7 @@ export const AiCoachSection = () => {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="lucide lucide-volume2-icon lucide-volume-2"
+                        className="lucide lucide-volume2-icon lucide-volume-2 max-sm:w-6 max-sm:h-6"
                     >
                         <path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" />
                         <path d="M16 9a5 5 0 0 1 0 6" />
@@ -312,12 +312,12 @@ export const AiCoachSection = () => {
                 </div>
 
                 {/* Analysis section */}
-                <div className="w-[535px] h-full space-y-[24px]">
-                    <div className="w-full h-[328px] rounded-[20px] p-[30px] space-y-[20px] bg-[#EFEFEF]">
-                        <h3 className="font-bold text-[32px] text-[#323232] leading-[100%] tracking-[0%]">
+                <div className="w-full md:w-[535px] h-full space-y-[24px]">
+                    <div className="w-full h-[328px] max-sm:h-auto rounded-[20px] p-[30px] max-sm:p-4 space-y-[20px] bg-[#EFEFEF]">
+                        <h3 className="font-bold text-[32px] max-sm:text-[24px] text-[#323232] leading-[100%] tracking-[0%]">
                             Real-time Analysis
                         </h3>
-                        <div className="w-[475px] p-4 rounded-[12px] shadow-sm border-[1px] border-[#E7E7E7] bg-[#FFFFFF]">
+                        <div className="w-[475px] max-sm:w-full p-4 rounded-[12px] shadow-sm border-[1px] border-[#E7E7E7] bg-[#FFFFFF]">
                             <div className="space-y-[12px]">
                                 <div className="flex items-center gap-[4px]">
                                     <div className="w-6 h-6 text-white bg-green-600 rounded-full flex items-center justify-center">
@@ -330,12 +330,12 @@ export const AiCoachSection = () => {
                                             <path d="M20.285 2.857l-11.428 11.428-5.142-5.143-2.143 2.143 7.285 7.285 13.571-13.571z" />
                                         </svg>
                                     </div>
-                                    <p className="font-semibold text-[18px] text-[#171D25] leading-[132%] tracking-[0%]">
+                                    <p className="font-semibold text-[18px] max-sm:text-[14px] text-[#171D25] leading-[132%] tracking-[0%]">
                                         Confidence Level
                                     </p>
                                 </div>
                                 <div className="flex items-center gap-[2px]">
-                                    <div className="w-[410px] h-[8px] bg-[#DFDFDF] rounded-full">
+                                    <div className="w-[410px] max-sm:w-full h-[8px] bg-[#DFDFDF] rounded-full">
                                         <div className="h-full w-[60%] bg-green-500 rounded-full"></div>
                                     </div>
                                     <p className="font-normal text-[12px] text-[#6D6D6D] leading-[16px] tracking-[0px] text-end">
@@ -344,7 +344,7 @@ export const AiCoachSection = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="w-[475px] p-4 rounded-[12px] shadow-sm border-[1px] border-[#E7E7E7] bg-[#FFFFFF]">
+                        <div className="w-[475px] max-sm:w-full p-4 rounded-[12px] shadow-sm border-[1px] border-[#E7E7E7] bg-[#FFFFFF]">
                             <div className="space-y-[12px]">
                                 <div className="flex items-center gap-[4px]">
                                     <div className="text-[#002868]">
@@ -364,22 +364,22 @@ export const AiCoachSection = () => {
                                             <path d="M7 16c.5-2 1.5-7 4-7 2 0 2 3 4 3 2.5 0 4.5-5 5-7" />
                                         </svg>
                                     </div>
-                                    <p className="font-semibold text-[18px] text-[#171D25] leading-[132%] tracking-[0%]">
+                                    <p className="font-semibold text-[18px] max-sm:text-[14px] text-[#171D25] leading-[132%] tracking-[0%]">
                                         Confidence Level
                                     </p>
                                 </div>
-                                <p className="font-normal font-lato text-[18px] text-[#909090] leading-[32px] tracking-[0%]">
+                                <p className="font-normal font-lato text-[18px] max-sm:text-[14px] text-[#909090] leading-[32px] max-sm:leading-[24px] tracking-[0%]">
                                     85% improvement in objection handling
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div className="w-full h-[220px] rounded-[20px] p-[30px] space-y-[20px] bg-[#EFEFEF]">
-                        <h3 className="font-bold text-[32px] text-[#323232] leading-[100%] tracking-[0%]">
+                    <div className="w-full h-[220px] max-sm:h-auto rounded-[20px] p-[30px] max-sm:p-4 space-y-[20px] bg-[#EFEFEF]">
+                        <h3 className="font-bold text-[32px] max-sm:text-[24px] text-[#323232] leading-[100%] tracking-[0%]">
                             Quick Actions
                         </h3>
-                        <div className="flex gap-5">
-                            <div className="w-[227.5px] h-[97px] p-[16px] bg-[#FFFFFF] border-[1px] border-[#E7E7E7] space-y-[8px] rounded-[12px]">
+                        <div className="flex gap-5 max-sm:gap-3">
+                            <div className="w-[227.5px] max-sm:w-full h-[97px] max-sm:h-auto p-[16px] max-sm:p-3 bg-[#FFFFFF] border-[1px] border-[#E7E7E7] space-y-[8px] rounded-[12px]">
                                 <div className="text-[#002868]">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -391,18 +391,18 @@ export const AiCoachSection = () => {
                                         strokeWidth="2"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
-                                        className="lucide lucide-book-text-icon lucide-book-text"
+                                        className="lucide lucide-book-text-icon lucide-book-text max-sm:w-5 max-sm:h-5"
                                     >
                                         <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" />
                                         <path d="M8 11h8" />
                                         <path d="M8 7h6" />
                                     </svg>
                                 </div>
-                                <span className="font-semibold text-[18px] text-[#171D25] leading-[132%] tracking-[0%]">
+                                <span className="font-semibold text-[18px] max-sm:text-[14px] text-[#171D25] leading-[132%] tracking-[0%]">
                                     Generate Script
                                 </span>
                             </div>
-                            <div className="w-[227.5px] h-[97px] p-[16px] bg-[#FFFFFF] border-[1px] border-[#E7E7E7] space-y-[8px] rounded-[12px]">
+                            <div className="w-[227.5px] max-sm:w-full h-[97px] max-sm:h-auto p-[16px] max-sm:p-3 bg-[#FFFFFF] border-[1px] border-[#E7E7E7] space-y-[8px] rounded-[12px]">
                                 <div className="text-[#002868]">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -414,7 +414,7 @@ export const AiCoachSection = () => {
                                         strokeWidth="2"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
-                                        className="lucide lucide-volleyball-icon lucide-volleyball"
+                                        className="lucide lucide-volleyball-icon lucide-volleyball max-sm:w-5 max-sm:h-5"
                                     >
                                         <path d="M11.1 7.1a16.55 16.55 0 0 1 10.9 4" />
                                         <path d="M12 12a12.6 12.6 0 0 1-8.7 5" />
@@ -424,7 +424,7 @@ export const AiCoachSection = () => {
                                         <circle cx="12" cy="12" r="10" />
                                     </svg>
                                 </div>
-                                <span className="font-semibold text-[18px] text-[#171D25] leading-[132%] tracking-[0%]">
+                                <span className="font-semibold text-[18px] max-sm:text-[14px] text-[#171D25] leading-[132%] tracking-[0%]">
                                     Practice Pitch
                                 </span>
                             </div>

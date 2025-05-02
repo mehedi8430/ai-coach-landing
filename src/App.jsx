@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <div className="bg-gradient-to-r from-[rgba(103,151,255,0.3)] to-[rgba(255,111,185,0.1)] ">
-        <div className="w-full md:w-[1440px] md:mx-auto ">
+        <div className="max-w-full md:max-w-[1440px] md:mx-auto">
           <Header />
           <HeroSection />
         </div>
