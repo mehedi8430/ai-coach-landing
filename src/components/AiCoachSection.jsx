@@ -49,7 +49,7 @@ export const AiCoachSection = () => {
     };
 
     return (
-        <div className="w-[1441.62px] mx-auto h-[820px] space-y-10 py-10">
+        <section className="w-[1441.62px] mx-auto space-y-10 py-[60px]">
             <div className="h-[117px] space-y-[20px]">
                 <p className="font-normal text-[24px] leading-[100%] tracking-[-1%] text-[#FCE38A] font-questrial">
                     Live Ai Coach
@@ -63,7 +63,7 @@ export const AiCoachSection = () => {
                 {/* Chat form */}
                 <div className="w-[787px] h-full border-[1px] border-[#CDCDCD] rounded-[12px] bg-[#F2F3F3] overflow-hidden flex flex-col">
                     <div className="bg-[#FFFFFF]">
-                        <p className="pl-[32px] py-[16px] font-bold text-[18px] leading-[120%] tracking-[0%] text-[#1B1B1B]">
+                        <p className="pl-[32px] py-[16px] font-bold text-[20px] leading-[120%] tracking-[0%] text-[#1B1B1B]">
                             AI Sales Coach
                         </p>
                     </div>
@@ -104,7 +104,7 @@ export const AiCoachSection = () => {
                                         'To handle objections effectively, listen actively to the customer’s concerns, acknowledge their perspective, and address the issue with clear, concise information. For example, if a client objects to price, highlight the value and ROI your product offers.'
                                     )
                                 }
-                                className="px-[17px] py-[12px] bg-[#00286814] rounded-[36px] font-normal text-[14px] leading-[100%] tracking-[-4%] text-center text-[#002868] font-geist"
+                                className="px-[17px] py-[12px] bg-[#00286814] rounded-[36px] font-normal text-[14px] leading-[100%] tracking-[-4%] text-center text-[#002868] font-geist cursor-pointer"
                             >
                                 How do I handle objections?
                             </button>
@@ -115,7 +115,7 @@ export const AiCoachSection = () => {
                                         'Here’s a sample cold email template: Subject: [Personalized Hook]\n\nHi [Name],\n\nI noticed [Specific Detail]. Our [Product/Service] can help you [Benefit]. Would you be open to a quick chat to explore how we can support your goals?\n\nBest,\n[Your Name]'
                                     )
                                 }
-                                className="px-[17px] py-[12px] bg-[#00286814] rounded-[36px] font-normal text-[14px] leading-[100%] tracking-[-4%] text-center text-[#002868] font-geist"
+                                className="px-[17px] py-[12px] bg-[#00286814] rounded-[36px] font-normal text-[14px] leading-[100%] tracking-[-4%] text-center text-[#002868] font-geist cursor-pointer"
                             >
                                 Give me a cold email template
                             </button>
@@ -126,7 +126,7 @@ export const AiCoachSection = () => {
                                         'Effective closing techniques include the assumptive close (acting as if the sale is confirmed), the urgency close (highlighting limited availability), and the question close (e.g., “Does this solution meet your needs?”). Always align the close with the customer’s needs.'
                                     )
                                 }
-                                className="px-[17px] py-[12px] bg-[#00286814] rounded-[36px] font-normal text-[14px] leading-[100%] tracking-[-4%] text-center text-[#002868] font-geist"
+                                className="px-[17px] py-[12px] bg-[#00286814] rounded-[36px] font-normal text-[14px] leading-[100%] tracking-[-4%] text-center text-[#002868] font-geist cursor-pointer"
                             >
                                 Closing techniques
                             </button>
@@ -137,7 +137,7 @@ export const AiCoachSection = () => {
                                         'Key negotiation tips: Build rapport, understand the other party’s priorities, and focus on win-win outcomes. Be prepared to offer concessions strategically, and always have a clear bottom line before starting the discussion.'
                                     )
                                 }
-                                className="px-[17px] py-[12px] bg-[#00286814] rounded-[36px] font-normal text-[14px] leading-[100%] tracking-[-4%] text-center text-[#002868] font-geist"
+                                className="px-[17px] py-[12px] bg-[#00286814] rounded-[36px] font-normal text-[14px] leading-[100%] tracking-[-4%] text-center text-[#002868] font-geist cursor-pointer"
                             >
                                 Negotiation tips
                             </button>
@@ -188,81 +188,75 @@ export const AiCoachSection = () => {
                             Real-time Analysis
                         </h3>
 
-                        <div className="w-[475px] p-4 rounded-lg shadow-sm border border-gray-200 bg-white">
-                            <div className="flex items-center justify-between mb-2">
-                                <div className="flex items-center gap-2">
-                                    <div className="w-4 h-4 text-green-600">
+                        <div className="w-[475px] p-4 rounded-[12px] shadow-sm border-[1px] border-[#E7E7E7] bg-[#FFFFFF]">
+                            <div className="space-y-[12px]">
+                                <div className="flex items-center gap-[4px]">
+                                    <div className="w-6 h-6 text-white bg-green-600 rounded-full flex items-center justify-center">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             fill="currentColor"
                                             viewBox="0 0 24 24"
+                                            className="text-white w-4 h-4"
                                         >
                                             <path d="M20.285 2.857l-11.428 11.428-5.142-5.143-2.143 2.143 7.285 7.285 13.571-13.571z" />
                                         </svg>
                                     </div>
-                                    <p className="font-medium text-gray-800">Confidence Level</p>
+                                    <p className="font-semibold text-[18px] text-[#171D25] leading-[132%] tracking-[0%] ">Confidence Level</p>
                                 </div>
-                                <p className="text-sm text-gray-600">60%</p>
-                            </div>
 
-                            <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden mb-2">
-                                <div
-                                    className="h-full bg-green-500 rounded-full"
-                                    style={{ width: '60%' }}
-                                ></div>
+                                <div className="flex items-center gap-[2px]">
+                                    <div className="w-[410px] h-[8px] bg-[#DFDFDF] rounded-full">
+                                        <div
+                                            className="h-full w-[60%] bg-green-500 rounded-full"
+                                        ></div>
+                                    </div>
+                                    <p className="font-normal text-[12px] text-[#6D6D6D] leading-[16px] tracking-[0px] text-end ">60%</p>
+                                </div>
                             </div>
+                        </div>
 
-                            <p className="text-sm text-gray-600">
-                                85% improvement in objection handling
-                            </p>
+                        <div className="w-[475px] p-4 rounded-[12px] shadow-sm border-[1px] border-[#E7E7E7] bg-[#FFFFFF]">
+                            <div className="space-y-[12px]">
+                                <div className="flex items-center gap-[4px]">
+                                    <div className="text-[#002868]">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-spline-icon lucide-chart-spline"><path d="M3 3v16a2 2 0 0 0 2 2h16" /><path d="M7 16c.5-2 1.5-7 4-7 2 0 2 3 4 3 2.5 0 4.5-5 5-7" /></svg>
+                                    </div>
+                                    <p className="font-semibold text-[18px] text-[#171D25] leading-[132%] tracking-[0%] ">Confidence Level</p>
+                                </div>
+                                <p className="font-normal font-lato text-[18px] text-[#909090] leading-[32px] tracking-[0%] ">
+                                    85% improvement in objection handling
+                                </p>
+                            </div>
                         </div>
                     </div>
 
                     <div className="w-full h-[220px] rounded-[20px] p-[30px] space-y-[20px] bg-[#EFEFEF]">
-                        <div className="bg-gray-100 p-4 rounded-lg w-fit">
-                            <h2 className="text-lg font-semibold text-gray-800 mb-4">
-                                Quick Actions
-                            </h2>
+                        <h3 className="font-bold text-[32px] text-[#323232] leading-[100%] tracking-[0%]">
+                            Quick Actions
+                        </h3>
 
-                            <div className="flex gap-4">
-                                {/* Generate Script */}
-                                <div className="flex items-center gap-2 bg-white px-4 py-3 rounded-lg shadow-sm cursor-pointer hover:shadow-md transition">
-                                    <div className="text-blue-900">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            className="w-6 h-6"
-                                            fill="currentColor"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path d="M6 2h9l5 5v13a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2zm9 7h5.5L15 3.5V9zM8 13h8v2H8v-2zm0 4h5v2H8v-2z" />
-                                        </svg>
-                                    </div>
-                                    <span className="text-sm text-gray-800 font-medium">
-                                        Generate Script
-                                    </span>
+                        <div className="flex gap-5">
+                            <div className="w-[227.5px] h-[97px] p-[16px] bg-[#FFFFFF] border-[1px] border-[#E7E7E7] space-y-[8px] rounded-[12px] ">
+                                <div className="text-[#002868]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-text-icon lucide-book-text"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" /><path d="M8 11h8" /><path d="M8 7h6" /></svg>
                                 </div>
+                                <span className="font-semibold text-[18px] text-[#171D25] leading-[132%] tracking-[0%] ">
+                                    Generate Script
+                                </span>
+                            </div>
 
-                                {/* Practice Pitch */}
-                                <div className="flex items-center gap-2 bg-white px-4 py-3 rounded-lg shadow-sm cursor-pointer hover:shadow-md transition">
-                                    <div className="text-blue-900">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            className="w-6 h-6"
-                                            fill="currentColor"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path d="M20 2H4a2 2 0 00-2 2v14l4-4h14a2 2 0 002-2V4a2 2 0 00-2-2z" />
-                                        </svg>
-                                    </div>
-                                    <span className="text-sm text-gray-800 font-medium">
-                                        Practice Pitch
-                                    </span>
+                            <div className="w-[227.5px] h-[97px] p-[16px] bg-[#FFFFFF] border-[1px] border-[#E7E7E7] space-y-[8px] rounded-[12px] ">
+                                <div className="text-[#002868]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volleyball-icon lucide-volleyball"><path d="M11.1 7.1a16.55 16.55 0 0 1 10.9 4" /><path d="M12 12a12.6 12.6 0 0 1-8.7 5" /><path d="M16.8 13.6a16.55 16.55 0 0 1-9 7.5" /><path d="M20.7 17a12.8 12.8 0 0 0-8.7-5 13.3 13.3 0 0 1 0-10" /><path d="M6.3 3.8a16.55 16.55 0 0 0 1.9 11.5" /><circle cx="12" cy="12" r="10" /></svg>
                                 </div>
+                                <span className="font-semibold text-[18px] text-[#171D25] leading-[132%] tracking-[0%] ">
+                                    Practice Pitch
+                                </span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
