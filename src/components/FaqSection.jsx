@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
 export const FaqSection = () => {
+    const [openFaqId, setOpenFaqId] = useState(null);
+
     const faqs = [
         {
             id: 1,
@@ -11,63 +13,65 @@ export const FaqSection = () => {
         {
             id: 2,
             question: "I like your works, how do we start a project?",
-            answer: "",
+            answer: "We usually start with a quick discovery call to understand your goals, then proceed with planning, estimation, and kickoff.",
         },
         {
             id: 3,
             question: "What info is required to get a quotation?",
-            answer: "",
+            answer: "To provide a quote, we’ll need a detailed description of the project, features, deadlines, and your budget range if possible.",
         },
     ];
 
+    const toggleFaq = (id) => {
+        setOpenFaqId((prevId) => (prevId === id ? null : id));
+    };
+
     return (
-        <div className="bg-white p-8 border-blue-500 border-2">
-            {/* Header */}
-            <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold text-gray-800">
+        <section className="max-w-[1441.62px] mx-auto space-y-10 py-[60px]">
+            <div className="flex gap-[80px] items-start">
+                <p className="w-[280px] font-questrial text-[#001C4A] text-[24px] font-normal leading-[100%] tracking-[-1%] ">
+                    Frequently asked questions
+                </p>
+                <h4 className="w-[920px] font-questrial text-[#111111] text-[60px] font-normal leading-[120%] tracking-[-1%] ">
                     Constant collaboration is how we roll. Let's see if we are a good fit.
-                </h2>
+                </h4>
             </div>
 
-            {/* FAQ List */}
             <div>
                 {faqs.map((faq) => (
-                    <FaqItem key={faq.id} faq={faq} />
+                    <div className="mb-10 last:mb-0" key={faq.id}>
+                        <div
+                            className="flex items-start justify-between gap-[40px] cursor-pointer"
+                            onClick={() => toggleFaq(faq.id)}
+                        >
+                            <span className="font-questrial font-normal text-[32px] text-[#8B7D4C] leading-[100%] tracking-[-1%] ">
+                                {faq.id.toString().padStart(2, "0")}
+                            </span>
+
+                            <div className="flex-grow w-[1281px]">
+                                <h3 className="font-questrial font-normal text-[40px] text-[#111111] leading-[100%] tracking-[-1%] ">
+                                    {faq.question}
+                                </h3>
+
+                                {openFaqId === faq.id && (
+                                    <p className="w-[1210px] mt-4 font-inter text-[16px] text-[#636363] leading-[140%] tracking-[-2%] ">
+                                        {faq.answer}
+                                    </p>
+                                )}
+                            </div>
+
+                            <span className="w-[27px] h-[27px]">
+                                <img
+                                    src={openFaqId === faq.id ? "/images/minus.svg" : "/images/plus.svg"}
+                                    alt={openFaqId === faq.id ? "Minus Icon" : "Plus Icon"}
+                                />
+                            </span>
+                        </div>
+
+                        <div className="my-6 border-[1px] border-[#CCCCCC]" />
+                    </div>
                 ))}
             </div>
-        </div>
-    );
-};
-
-// FAQ Item Component
-const FaqItem = ({ faq }) => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    return (
-        <div className="mb-4 last:mb-0">
-            <div
-                className="flex items-center justify-between cursor-pointer"
-                onClick={() => setIsOpen(!isOpen)}
-            >
-                {/* Number */}
-                <span className="text-lg font-bold text-gray-800 mr-4">{faq.id.toString().padStart(2, "0")}</span>
-
-                {/* Question */}
-                <div className="flex-grow">
-                    <h3 className="text-lg font-medium text-gray-800">{faq.question}</h3>
-                    {isOpen && (
-                        <p className="mt-2 text-sm text-gray-600">{faq.answer}</p>
-                    )}
-                </div>
-
-                {/* Toggle Icon */}
-                <span className="text-xl text-gray-600">
-                    {isOpen ? "-" : "+"}
-                </span>
-            </div>
-
-            {/* Separator */}
-            <hr className="my-2" />
-        </div>
+        </section>
     );
 };

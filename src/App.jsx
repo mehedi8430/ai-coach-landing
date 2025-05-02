@@ -1,8 +1,10 @@
 import "./App.css";
 import { AiCoachSection } from "./components/AiCoachSection";
 import { Courses } from "./components/Courses";
+import { FaqSection } from "./components/FaqSection";
 import { Header } from "./components/Header";
 import { HeroSection } from "./components/HeroSection";
+import { TestimonialSection } from "./components/TestimonialSection";
 
 function App() {
 
@@ -20,6 +22,12 @@ function App() {
       </div>
 
       <Courses />
+      <FaqSection />
+      <TestimonialSection />
+
+      <div className="bg-[#FAFAFA]">
+
+      </div>
     </>
   )
 }
