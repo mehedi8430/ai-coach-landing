@@ -30,6 +30,7 @@ function App() {
       <div className="bg-gradient-to-r from-[rgba(103,151,255,0.3)] to-[rgba(255,111,185,0.1)] ">
         <CallToActionSection />
         <Footer />
+        <div className="border-[1px] border-[#B4B4B4] pb-12" />
       </div>
     </>
   )
