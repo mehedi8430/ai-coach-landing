@@ -1,7 +1,9 @@
 import "./App.css";
 import { AiCoachSection } from "./components/AiCoachSection";
+import { CallToActionSection } from "./components/CallToActionSection";
 import { Courses } from "./components/Courses";
 import { FaqSection } from "./components/FaqSection";
+import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { HeroSection } from "./components/HeroSection";
 import { TestimonialSection } from "./components/TestimonialSection";
@@ -25,8 +27,9 @@ function App() {
       <FaqSection />
       <TestimonialSection />
 
-      <div className="bg-[#FAFAFA]">
-
+      <div className="bg-gradient-to-r from-[rgba(103,151,255,0.3)] to-[rgba(255,111,185,0.1)] ">
+        <CallToActionSection />
+        <Footer />
       </div>
     </>
   )
