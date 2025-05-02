@@ -23,8 +23,8 @@ Git: For version control.
 1. **Clone the Repository**
 
 ````bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/mehedi8430/ai-coach-landing.git
+cd ai-coach-landing
 
 2. **Install Dependencies:Ensure you have Node.js installed, then run:**
 ```bash
@@ -47,7 +47,7 @@ npm run preview
 
 ### Deployment
 
-The project is deployed on Vercel. You can view the live application at:Live URL (Replace with actual Vercel URL after deployment)
+The project is deployed on Vercel. You can view the live application at:[https://ai-coach-landing.vercel.app/](https://ai-coach-landing.vercel.app/)
 
 ### Screenshots
 
@@ -59,15 +59,18 @@ Chat Box Functionality:
 
 ### Notes
 
-The chat box is fully functional, allowing users to type and append messages.
-The design is responsive and tested on mobile, tablet, and desktop devices.
-The project strictly follows the provided Figma design for pixel-perfect accuracy.
-Error handling is implemented for the chat box to manage empty inputs or unexpected behavior.
+- The chat box is fully functional, allowing users to type and append messages and also send message by click selected message button and can get reply.
+- The fas section is functional to show the answer.
+- The design is responsive and tested on mobile, tablet, and desktop devices.
+- The project strictly follows the provided Figma design for pixel-perfect accuracy.
+- Error handling is implemented for the chat box to manage empty inputs or unexpected behavior.
 
-Submission Details
+### Submission Details
 
-GitHub Repository: https://github.com/your-username/your-repo-name (Replace with actual repo link)
-Live URL: Live URL (Replace with actual Vercel URL)
+GitHub Repository: [https://github.com/mehedi8430/ai-coach-landing](https://github.com/mehedi8430/ai-coach-landing)
+
+Live URL: [https://ai-coach-landing.vercel.app/](https://ai-coach-landing.vercel.app/)
+
 Submission Form: Submitted via Google Form
 
 Thank you for reviewing my submission!

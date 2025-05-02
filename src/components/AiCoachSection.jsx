@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const AiCoachSection = () => {
     const [messages, setMessages] = useState([
@@ -9,42 +9,89 @@ export const AiCoachSection = () => {
         },
     ]);
     const [inputText, setInputText] = useState('');
+    const [error, setError] = useState(null);
+    const MAX_INPUT_LENGTH = 500;
+
+    useEffect(() => {
+        if (error) {
+            setError('Please enter a message.');
+        } else {
+            setError(null);
+        }
+    }, [error]);
 
     const handleSendMessage = () => {
-        if (inputText.trim() === '') return;
+        try {
+            if (inputText.trim() === '') {
+                setError('Please enter a message.');
+                return;
+            }
 
-        const newMessage = {
-            id: messages.length + 1,
-            text: inputText,
-            sender: 'User',
-        };
+            if (inputText.length > MAX_INPUT_LENGTH) {
+                setError(`Message is too long. Maximum ${MAX_INPUT_LENGTH} characters allowed.`);
+                return;
+            }
 
-        setMessages([...messages, newMessage]);
-        setInputText('');
+            const newMessage = {
+                id: messages.length + 1,
+                text: inputText,
+                sender: 'User',
+            };
+
+            setMessages([...messages, newMessage]);
+            setInputText('');
+            setError(null);
+        } catch (err) {
+            console.error('Error sending message:', err);
+            setError('An unexpected error occurred. Please try again.');
+        }
     };
 
     const handleButtonClick = (question, aiResponse) => {
-        const userMessage = {
-            id: messages.length + 1,
-            text: question,
-            sender: 'User',
-        };
-        const aiMessage = {
-            id: messages.length + 2,
-            text: aiResponse,
-            sender: 'AI',
-        };
+        try {
+            const userMessage = {
+                id: messages.length + 1,
+                text: question,
+                sender: 'User',
+            };
+            const aiMessage = {
+                id: messages.length + 2,
+                text: aiResponse,
+                sender: 'AI',
+            };
 
-        setMessages([...messages, userMessage, aiMessage]);
+            setMessages([...messages, userMessage, aiMessage]);
+            setError(null);
+        } catch (err) {
+            console.error('Error handling button click:', err);
+            setError('An unexpected error occurred. Please try again.');
+        }
     };
 
     const handleInputChange = (e) => {
-        setInputText(e.target.value);
+        try {
+            const value = e.target.value;
+
+            if (value.length <= MAX_INPUT_LENGTH) {
+                setInputText(value);
+                setError(null);
+            } else {
+                setError(`Message is too long. Maximum ${MAX_INPUT_LENGTH} characters allowed.`);
+            }
+        } catch (err) {
+            console.error('Error handling input change:', err);
+            setError('An unexpected error occurred while typing.');
+        }
     };
 
     const handleKeyPress = (e) => {
-        if (e.key === 'Enter' && inputText.trim() !== '') {
-            handleSendMessage();
+        try {
+            if (e.key === 'Enter' && inputText.trim() !== '') {
+                handleSendMessage();
+            }
+        } catch (err) {
+            console.error('Error handling key press:', err);
+            setError('An unexpected error occurred. Please try again.');
         }
     };
 
@@ -72,8 +119,7 @@ export const AiCoachSection = () => {
                         {messages.map((message) => (
                             <div
                                 key={message.id}
-                                className={`flex gap-4 items-start ${message.sender === 'User' ? 'justify-end' : ''
-                                    }`}
+                                className={`flex gap-4 items-start ${message.sender === 'User' ? 'justify-end' : ''}`}
                             >
                                 {message.sender === 'AI' && (
                                     <div className="w-10 h-10 rounded-[41px] bg-[#D9D9D9]"></div>
@@ -150,35 +196,119 @@ export const AiCoachSection = () => {
                                 value={inputText}
                                 onChange={handleInputChange}
                                 onKeyPress={handleKeyPress}
-                                className="w-[600px] py-[17px] px-[23px] rounded-[4px] border border-[#E5E7EB] bg-[#FFFFFF3D] placeholder:text-[#9A9A9A] placeholder:font-normal placeholder:text-[14px] placeholder:leading-[100%] placeholder:tracking-[0.04em]"
+                                className={`w-[600px] py-[17px] px-[23px] rounded-[4px] border ${error ? 'border-red-500' : 'border-[#E5E7EB]'
+                                    } bg-[#FFFFFF3D] placeholder:text-[#9A9A9A] placeholder:font-normal placeholder:text-[14px] placeholder:leading-[100%] placeholder:tracking-[0.04em]`}
                             />
                             <button
                                 onClick={handleSendMessage}
                                 className="w-[100px] h-[48px] p-[14px] bg-[#002868] rounded-[8px] flex gap-[10px] items-center font-geist font-medium text-[100%] leading-[100%] tracking-[-4%] text-[#FFFFFF]"
                             >
                                 Send
-                                <svg xmlns="http://www.w3.org/2000/svg" width="13.99px" height="16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-icon lucide-arrow-up"><path d="m5 12 7-7 7 7" /><path d="M12 19V5" /></svg>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="13.99px"
+                                    height="16px"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="lucide lucide-arrow-up-icon lucide-arrow-up"
+                                >
+                                    <path d="m5 12 7-7 7 7" />
+                                    <path d="M12 19V5" />
+                                </svg>
                             </button>
                         </div>
+                        {error && (
+                            <p className="text-red-500 text-[14px] font-lato">
+                                {error}
+                            </p>
+                        )}
                     </div>
                 </div>
 
                 {/* Action section */}
                 <div className="w-[72px] h-[328px] border-[1px] border-[#4E4E4E1A] rounded-[57px] bg-[#F2F3F3] flex flex-col gap-[40px] p-[24px] backdrop-blur-xl">
-                    {/* lucide/refresh-ccw */}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw-icon lucide-refresh-ccw"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /><path d="M3 3v5h5" /><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" /><path d="M16 16h5v5" /></svg>
-
-                    {/* lucide/thumbs-up */}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-thumbs-up-icon lucide-thumbs-up"><path d="M7 10v12" /><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z" /></svg>
-
-                    {/* lucide/thumbs-down */}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-thumbs-up-icon lucide-thumbs-up"><path d="M7 10v12" /><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z" /></svg>
-
-                    {/* lucide/clipboard */}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-icon lucide-clipboard"><rect width="8" height="4" x="8" y="2" rx="1" ry="1" /><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /></svg>
-
-                    {/* lucide/volume-2 */}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volume2-icon lucide-volume-2"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" /><path d="M16 9a5 5 0 0 1 0 6" /><path d="M19.364 18.364a9 9 0 0 0 0-12.728" /></svg>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="lucide lucide-refresh-ccw-icon lucide-refresh-ccw"
+                    >
+                        <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                        <path d="M3 3v5h5" />
+                        <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
+                        <path d="M16 16h5v5" />
+                    </svg>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="lucide lucide-thumbs-up-icon lucide-thumbs-up"
+                    >
+                        <path d="M7 10v12" />
+                        <path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z" />
+                    </svg>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="lucide lucide-thumbs-up-icon lucide-thumbs-up"
+                    >
+                        <path d="M7 10v12" />
+                        <path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z" />
+                    </svg>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="lucide lucide-clipboard-icon lucide-clipboard"
+                    >
+                        <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+                        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+                    </svg>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="lucide lucide-volume2-icon lucide-volume-2"
+                    >
+                        <path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" />
+                        <path d="M16 9a5 5 0 0 1 0 6" />
+                        <path d="M19.364 18.364a9 9 0 0 0 0-12.728" />
+                    </svg>
                 </div>
 
                 {/* Analysis section */}
@@ -187,7 +317,6 @@ export const AiCoachSection = () => {
                         <h3 className="font-bold text-[32px] text-[#323232] leading-[100%] tracking-[0%]">
                             Real-time Analysis
                         </h3>
-
                         <div className="w-[475px] p-4 rounded-[12px] shadow-sm border-[1px] border-[#E7E7E7] bg-[#FFFFFF]">
                             <div className="space-y-[12px]">
                                 <div className="flex items-center gap-[4px]">
@@ -201,55 +330,101 @@ export const AiCoachSection = () => {
                                             <path d="M20.285 2.857l-11.428 11.428-5.142-5.143-2.143 2.143 7.285 7.285 13.571-13.571z" />
                                         </svg>
                                     </div>
-                                    <p className="font-semibold text-[18px] text-[#171D25] leading-[132%] tracking-[0%] ">Confidence Level</p>
+                                    <p className="font-semibold text-[18px] text-[#171D25] leading-[132%] tracking-[0%]">
+                                        Confidence Level
+                                    </p>
                                 </div>
-
                                 <div className="flex items-center gap-[2px]">
                                     <div className="w-[410px] h-[8px] bg-[#DFDFDF] rounded-full">
-                                        <div
-                                            className="h-full w-[60%] bg-green-500 rounded-full"
-                                        ></div>
+                                        <div className="h-full w-[60%] bg-green-500 rounded-full"></div>
                                     </div>
-                                    <p className="font-normal text-[12px] text-[#6D6D6D] leading-[16px] tracking-[0px] text-end ">60%</p>
+                                    <p className="font-normal text-[12px] text-[#6D6D6D] leading-[16px] tracking-[0px] text-end">
+                                        60%
+                                    </p>
                                 </div>
                             </div>
                         </div>
-
                         <div className="w-[475px] p-4 rounded-[12px] shadow-sm border-[1px] border-[#E7E7E7] bg-[#FFFFFF]">
                             <div className="space-y-[12px]">
                                 <div className="flex items-center gap-[4px]">
                                     <div className="text-[#002868]">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-spline-icon lucide-chart-spline"><path d="M3 3v16a2 2 0 0 0 2 2h16" /><path d="M7 16c.5-2 1.5-7 4-7 2 0 2 3 4 3 2.5 0 4.5-5 5-7" /></svg>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            className="lucide lucide-chart-spline-icon lucide-chart-spline"
+                                        >
+                                            <path d="M3 3v16a2 2 0 0 0 2 2h16" />
+                                            <path d="M7 16c.5-2 1.5-7 4-7 2 0 2 3 4 3 2.5 0 4.5-5 5-7" />
+                                        </svg>
                                     </div>
-                                    <p className="font-semibold text-[18px] text-[#171D25] leading-[132%] tracking-[0%] ">Confidence Level</p>
+                                    <p className="font-semibold text-[18px] text-[#171D25] leading-[132%] tracking-[0%]">
+                                        Confidence Level
+                                    </p>
                                 </div>
-                                <p className="font-normal font-lato text-[18px] text-[#909090] leading-[32px] tracking-[0%] ">
+                                <p className="font-normal font-lato text-[18px] text-[#909090] leading-[32px] tracking-[0%]">
                                     85% improvement in objection handling
                                 </p>
                             </div>
                         </div>
                     </div>
-
                     <div className="w-full h-[220px] rounded-[20px] p-[30px] space-y-[20px] bg-[#EFEFEF]">
                         <h3 className="font-bold text-[32px] text-[#323232] leading-[100%] tracking-[0%]">
                             Quick Actions
                         </h3>
-
                         <div className="flex gap-5">
-                            <div className="w-[227.5px] h-[97px] p-[16px] bg-[#FFFFFF] border-[1px] border-[#E7E7E7] space-y-[8px] rounded-[12px] ">
+                            <div className="w-[227.5px] h-[97px] p-[16px] bg-[#FFFFFF] border-[1px] border-[#E7E7E7] space-y-[8px] rounded-[12px]">
                                 <div className="text-[#002868]">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-text-icon lucide-book-text"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" /><path d="M8 11h8" /><path d="M8 7h6" /></svg>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="24"
+                                        height="28"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="lucide lucide-book-text-icon lucide-book-text"
+                                    >
+                                        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" />
+                                        <path d="M8 11h8" />
+                                        <path d="M8 7h6" />
+                                    </svg>
                                 </div>
-                                <span className="font-semibold text-[18px] text-[#171D25] leading-[132%] tracking-[0%] ">
+                                <span className="font-semibold text-[18px] text-[#171D25] leading-[132%] tracking-[0%]">
                                     Generate Script
                                 </span>
                             </div>
-
-                            <div className="w-[227.5px] h-[97px] p-[16px] bg-[#FFFFFF] border-[1px] border-[#E7E7E7] space-y-[8px] rounded-[12px] ">
+                            <div className="w-[227.5px] h-[97px] p-[16px] bg-[#FFFFFF] border-[1px] border-[#E7E7E7] space-y-[8px] rounded-[12px]">
                                 <div className="text-[#002868]">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volleyball-icon lucide-volleyball"><path d="M11.1 7.1a16.55 16.55 0 0 1 10.9 4" /><path d="M12 12a12.6 12.6 0 0 1-8.7 5" /><path d="M16.8 13.6a16.55 16.55 0 0 1-9 7.5" /><path d="M20.7 17a12.8 12.8 0 0 0-8.7-5 13.3 13.3 0 0 1 0-10" /><path d="M6.3 3.8a16.55 16.55 0 0 0 1.9 11.5" /><circle cx="12" cy="12" r="10" /></svg>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="28"
+                                        height="27"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        className="lucide lucide-volleyball-icon lucide-volleyball"
+                                    >
+                                        <path d="M11.1 7.1a16.55 16.55 0 0 1 10.9 4" />
+                                        <path d="M12 12a12.6 12.6 0 0 1-8.7 5" />
+                                        <path d="M16.8 13.6a16.55 16.55 0 0 1-9 7.5" />
+                                        <path d="M20.7 17a12.8 12.8 0 0 0-8.7-5 13.3 13.3 0 0 1 0-10" />
+                                        <path d="M6.3 3.8a16.55 16.55 0 0 0 1.9 11.5" />
+                                        <circle cx="12" cy="12" r="10" />
+                                    </svg>
                                 </div>
-                                <span className="font-semibold text-[18px] text-[#171D25] leading-[132%] tracking-[0%] ">
+                                <span className="font-semibold text-[18px] text-[#171D25] leading-[132%] tracking-[0%]">
                                     Practice Pitch
                                 </span>
                             </div>

@@ -52,27 +52,27 @@ export const Footer = () => {
                         </h3>
                         <ul className="space-y-6">
                             <li>
-                                <a href="#" className="text-[#335386] text-[14px] font-normal leading-[100%] tracking-[-2%]">
+                                <a href="#" className="text-[#335386] text-[14px] font-normal leading-[100%] tracking-[-2%] hover:underline hover:underline-offset-0">
                                     Service
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className="text-[#335386] text-[14px] font-normal leading-[100%] tracking-[-2%]">
+                                <a href="#" className="text-[#335386] text-[14px] font-normal leading-[100%] tracking-[-2%] hover:underline hover:underline-offset-0">
                                     Agency
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className="text-[#335386] text-[14px] font-normal leading-[100%] tracking-[-2%]">
+                                <a href="#" className="text-[#335386] text-[14px] font-normal leading-[100%] tracking-[-2%] hover:underline hover:underline-offset-0">
                                     Case Study
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className="text-[#335386] text-[14px] font-normal leading-[100%] tracking-[-2%]">
+                                <a href="#" className="text-[#335386] text-[14px] font-normal leading-[100%] tracking-[-2%] hover:underline hover:underline-offset-0">
                                     Resource
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className="text-[#335386] text-[14px] font-normal leading-[100%] tracking-[-2%]">
+                                <a href="#" className="text-[#335386] text-[14px] font-normal leading-[100%] tracking-[-2%] hover:underline hover:underline-offset-0">
                                     Contact
                                 </a>
                             </li>
@@ -85,17 +85,17 @@ export const Footer = () => {
                         </h3>
                         <ul className="space-y-6">
                             <li>
-                                <a href="#" className="text-[#335386] text-[14px] font-normal leading-[100%] tracking-[-2%]">
+                                <a href="#" className="text-[#335386] text-[14px] font-normal leading-[100%] tracking-[-2%] hover:underline hover:underline-offset-0">
                                     Privacy Policy
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className="text-[#335386] text-[14px] font-normal leading-[100%] tracking-[-2%]">
+                                <a href="#" className="text-[#335386] text-[14px] font-normal leading-[100%] tracking-[-2%] hover:underline hover:underline-offset-0">
                                     Copyright
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className="text-[#335386] text-[14px] font-normal leading-[100%] tracking-[-2%]">
+                                <a href="#" className="text-[#335386] text-[14px] font-normal leading-[100%] tracking-[-2%] hover:underline hover:underline-offset-0">
                                     Email Address
                                 </a>
                             </li>
