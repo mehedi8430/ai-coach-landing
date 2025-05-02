@@ -96,8 +96,8 @@ export const AiCoachSection = () => {
     };
 
     return (
-        <section className="max-w-full md:w-[1441.62px] md:mx-auto space-y-10 py-[60px] px-4">
-            <div className="h-[117px] space-y-[20px]">
+        <section className="max-w-full sm:h-[1400px] md:h-auto md:w-[1441.62px] md:mx-auto space-y-10 py-[60px] px-4 md:px-0">
+            <div className="space-y-[20px]">
                 <p className="font-normal text-[24px] max-sm:text-[18px] leading-[100%] tracking-[-1%] text-[#FCE38A] font-questrial">
                     Live Ai Coach
                 </p>
@@ -108,7 +108,7 @@ export const AiCoachSection = () => {
 
             <div className="w-full h-[577px] max-sm:h-auto rounded-[8px] flex flex-col md:flex-row md:items-center gap-6">
                 {/* Chat form */}
-                <div className="w-full md:w-[787px] h-full border-[1px] border-[#CDCDCD] rounded-[12px] bg-[#F2F3F3] overflow-hidden flex flex-col">
+                <div className="w-full md:w-[787px] h-full border-[1px] border-[#CDCDCD] rounded-[12px] bg-[#F2F3F3]  flex flex-col">
                     <div className="bg-[#FFFFFF]">
                         <p className="pl-[32px] py-[16px] font-bold text-[20px] max-sm:text-[16px] leading-[120%] tracking-[0%] text-[#1B1B1B]">
                             AI Sales Coach
@@ -230,7 +230,7 @@ export const AiCoachSection = () => {
                 </div>
 
                 {/* Action section */}
-                <div className="w-[72px] h-[328px] max-sm:w-full max-sm:h-auto max-sm:flex-row max-sm:flex-wrap max-sm:gap-4 max-sm:p-4 border-[1px] border-[#4E4E4E1A] rounded-[57px] max-sm:rounded-[12px] bg-[#F2F3F3] flex flex-col md:flex-col gap-[40px] p-[24px] backdrop-blur-xl">
+                <div className="w-[72px] sm:w-full md:w-[72px] md:h-[328px] sm:h-auto h-[328px] max-sm:w-full max-sm:h-auto max-sm:flex-row max-sm:flex-wrap max-sm:gap-4 max-sm:p-4 border-[1px] border-[#4E4E4E1A] rounded-[57px] max-sm:rounded-[12px] bg-[#F2F3F3] flex flex-col md:flex-col sm:flex-row sm:justify-center max-sm:justify-center gap-[40px] p-[24px] backdrop-blur-xl">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"

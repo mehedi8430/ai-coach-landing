@@ -96,8 +96,8 @@ export const Header = () => {
 
             {/* Mobile Menu */}
             {isMenuOpen && (
-                <div className="md:hidden absolute top-[90px] left-0 right-0 bg-white shadow-lg px-4 py-4 z-50 rounded-md">
-                    <div className="flex flex-col gap-4">
+                <div className={`md:hidden absolute top-[90px] left-0 right-0 bg-white shadow-lg px-4 py-4 z-50 rounded-md mx-1 transition-all duration-300 ease-in-out ${isMenuOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'}`} aria-hidden={!isMenuOpen}>
+                    <div className="flex flex-col gap-4 items-center">
                         <a
                             href="#home"
                             className="font-plus_jakarta_sans text-[#020407] font-semibold text-[14px] leading-[100%] tracking-[0%] hover:text-[#FF6FB9] transition duration-300 ease-in-out"
